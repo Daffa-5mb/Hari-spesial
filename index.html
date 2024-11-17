@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Made by Daffa</title>
+    <script>
+        function showContent() {
+            document.getElementById('loginForm').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                document.getElementById('content').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('content').style.opacity = '1';
+                }, 10);
+                
+                // Memutar musik setelah login
+                backgroundMusic.play().catch(error => {
+                    console.error("Error playing audio:", error);
+                });
+            }, 500);
+        }
+    </script>
+</head>
+<body>
+    <audio id="backgroundMusic" loop>
+        <source src="backsound.mp3" type="audio/mpeg"> <!-- Ganti dengan file backsound Anda -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="loginForm">
+        <h2>Silahkan Login</h2>
+        <form onsubmit="showContent(); return false;">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="content" style="display: none;">
+        <h1>Selamat Hari Ibu!</h1>
+        <img src="image.webp" alt="Hari Ibu">
+        <p id="message">Hari ini adalah hari yang istimewa, hari untuk mengingat dan menghormati sosok paling luar biasa dalam hidupku seorang ibu. Engkaulah yang selalu ada di setiap langkahku, yang dengan sabar mendidik, mengasihi, dan membimbing tanpa lelah.
+            <br><br>
+            Setiap pengorbananmu, dari pagi yang penuh kesibukan hingga malam yang panjang, tak pernah terlewat dari pandanganku. Engkau memberikan cinta yang tak pernah berkurang, meskipun terkadang aku lupa untuk mengucapkan terima kasih. Engkau adalah pelita dalam gelap, rumah dalam kelelahan, dan kekuatan saat aku merasa lemah.
+            <br><br>
+            Terima kasih, Ibu, untuk segala doa yang kau panjatkan tanpa putramu sadar sadari. Untuk semua pengorbanan yang sering aku abaikan, untuk kasih sayang yang selalu aku terima tanpa henti. Engkaulah cinta pertamaku, pahlawan tanpa tanda jasa, dan alasan putramu terus berusaha menjadi lebih baik.
+            <br><br>
+            Semoga di Hari Ibu ini, engkau bisa merasakan betapa berartinya dirimu bagi keluarga ini. Putramu selalu mencintaimu, tak hanya hari ini, tetapi setiap detik dalam hidupku. Doaku selalu menyertaimu, agar engkau diberi kesehatan, kebahagiaan, dan cinta yang melimpah, seperti yang selalu engkau berikan pada putramu ini.
+            <br><br>
+            Selamat Hari Ibu, Ibu tersayang. Putramu mencintaimu, lebih dari yang pernah bisa putramu ungkapkan dengan kata-kata. ❤️
+        </p>
+        <button id="toggleMusic">Matikan Suara</button>
+        <p>Maaf Daffa belum bisa ngasih sesuatu, baru ngasih hasil belajar</p>
+    </div>
+
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const toggleMusicButton = document.getElementById('toggleMusic');
+
+        toggleMusicButton.addEventListener('click', () => {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                toggleMusicButton.textContent = 'Matikan Suara';
+            } else {
+                backgroundMusic.pause();
+                toggleMusicButton.textContent = 'Hidupkan Suara';
+            }
+        });
+    </script>
+</body>
+</html>
